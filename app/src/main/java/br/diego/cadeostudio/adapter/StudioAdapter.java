@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.diego.cadeostudio.R;
+import br.diego.cadeostudio.Utils.Util;
 import br.diego.cadeostudio.core.Controller;
 import br.diego.cadeostudio.models.Studio;
 import co.dift.ui.SwipeToAction;
@@ -53,7 +54,13 @@ public class StudioAdapter extends ArrayAdapter<Studio> {
 
             TextView responsavel = (TextView) v.findViewById(R.id.responsavel);
             if (responsavel != null) {
-                responsavel.setText(studio.getDono());
+                responsavel.setText(studio.getDono() +" -  há "+
+                        Util.getDistanceBetweenTwoPoints
+                                (Controller.getInstance().getLocation().getLatitude(),
+                                 Controller.getInstance().getLocation().getLongitude(),
+                                 studio.getLatitude(),
+                                 studio.getLongitude()
+                                        ));
             }
         }
         return v;

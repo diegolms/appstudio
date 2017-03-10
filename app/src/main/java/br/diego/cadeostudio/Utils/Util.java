@@ -7,7 +7,7 @@ import android.location.Location;
  */
 public class Util {
 
-    public String getDistanceBetweenTwoPoints(double latitudeAtual, double longitudeAtual, double latitude, double longitude) {
+    public static String getDistanceBetweenTwoPoints(double latitudeAtual, double longitudeAtual, double latitude, double longitude) {
 
         Location locationA = new Location("point A");
         locationA.setLatitude(latitudeAtual);

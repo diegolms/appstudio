@@ -17,6 +17,7 @@ import java.util.List;
 import br.diego.cadeostudio.adapter.StudioAdapter;
 import br.diego.cadeostudio.core.Controller;
 import br.diego.cadeostudio.models.Studio;
+import br.diego.cadeostudio.service.LocationService;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
 
+        if(Controller.locationService == null){
+            Controller.locationService = new LocationService(getApplicationContext());
+        }
+
+
         populate();
 
         StudioAdapter adapter = new StudioAdapter(
@@ -41,20 +47,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void populate() {
         int cont = 0;
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
+        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ , "android.resource://" + getPackageName() + "/" + R.drawable.animal1, -7.1688413,-34.8385449));
     }
 
     @Override

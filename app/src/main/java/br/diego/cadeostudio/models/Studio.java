@@ -7,14 +7,16 @@ public class Studio {
     private String nome;
     private String dono;
     private String imageUrl;
-    private String distancia;
+    private double latitude;
+    private double longitude;
 
 
-    public Studio(String nome, String dono, String distancia, String imageUrl) {
+    public Studio(String nome, String dono, String imageUrl, double latitude, double longitude) {
         this.nome = nome;
         this.dono = dono;
-        this.distancia = distancia;
         this.imageUrl = imageUrl;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Studio() {
@@ -32,8 +34,19 @@ public class Studio {
         return imageUrl;
     }
 
-    public String getDistancia() {
-        return distancia;
+    public double getLatitude() {
+        return latitude;
     }
 
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 }
