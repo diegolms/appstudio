@@ -12,10 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -41,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         if(Controller.locationService == null){
             Controller.locationService = new LocationService(getApplicationContext());
@@ -83,24 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void populate() {
         int cont = 0;
-<<<<<<< HEAD
-        this.studios.add(new Studio("Studio " +cont++, "Responsavel "+cont++ , "android.resource://" + getPackageName() + "/" + R.drawable.animal1, -7.1688413,-34.8385449));
-=======
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
-        this.studios.add(new Studio("Studio " + cont++, "Responsavel " + cont++ + " - há 16 km", "16km", "android.resource://" + getPackageName() + "/" + R.drawable.animal1));
->>>>>>> origin/master
+        this.studios.add(new Studio("Clan Studio" +cont++, "Responsavel "+cont++ , "android.resource://" + getPackageName() + "/" + R.drawable.animal1, -7.1688413,-34.8385449));
     }
 
     @Override
@@ -162,5 +152,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onProviderDisabled(String s) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_email:
+                Intent i = new Intent(MainActivity.this, NovoStudioActivity.class);
+                startActivity(i);
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }
